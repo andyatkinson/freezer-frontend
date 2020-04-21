@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import * as Ons from 'react-onsenui'
 
 const Item = ({ id, name, addedOn }) => (
-  <li key={id}>{name} - {addedOn}</li>
+  <ons-list-item key={id}>
+    {name}
+    <div className="right">Added: {addedOn}</div>
+  </ons-list-item>
 )
 
 Item.propTypes = {

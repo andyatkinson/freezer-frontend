@@ -2,6 +2,7 @@ import React from 'react'
 import Item from './Item'
 import { connect } from 'react-redux'
 import { fetchItems } from '../actions/fetchItems'
+import * as Ons from 'react-onsenui'
 
 class ItemList extends React.Component {
   componentDidMount() {
@@ -20,11 +21,12 @@ class ItemList extends React.Component {
     }
 
     return (
-      <ul>
+      <div>
+        <ons-list-header>Items</ons-list-header>
         {items.map(item =>
           <Item key={item.id} {...item} />
         )}
-      </ul>
+      </div>
     )
   }
 }

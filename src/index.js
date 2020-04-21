@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { createStore, applyMiddleware } from 'redux'
 import ReactDOM from 'react-dom'
 import './index.css'
@@ -8,6 +8,11 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 //import * as serviceWorker from './serviceWorker';
 //
+//
+
+// Webpack CSS import
+import 'onsenui/css/onsenui.css'
+import 'onsenui/css/onsen-css-components.css'
 
 const store = createStore(
   rootReducer,

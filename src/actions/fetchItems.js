@@ -10,35 +10,6 @@ function getItems() {
     })
 }
 
-// function fakeGetItems() {
-//   return new Promise(resolve => {
-//     // Resolve after a timeout so we can see the loading indicator
-//     setTimeout(
-//       () =>
-//         resolve({
-//           items: [
-//             {
-//               id: 0,
-//               name: "Apple",
-//               addedOn: "2020-01-02"
-//             },
-//             {
-//               id: 1,
-//               name: "Bananas",
-//               addedOn: "2020-02-01"
-//             },
-//             {
-//               id: 2,
-//               name: "Strawberries",
-//               addedOn: "2020-03-01"
-//             }
-//           ]
-//         }),
-//       1000
-//     );
-//   });
-// }
-
 export function fetchItems() {
   return dispatch => {
     dispatch(fetchItemsBegin())
