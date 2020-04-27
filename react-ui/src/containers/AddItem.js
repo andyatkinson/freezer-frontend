@@ -21,7 +21,7 @@ const AddItem = ({ dispatch }) => {
 
     const newItem = {name: input.value, addedOn: today}
 
-    axios.post("http://localhost:1323/items", newItem)
+    axios.post("https://freezer-stuff.herokuapp.com/items", newItem)
     .then(res => {
       dispatch(addItem(res.data))
 

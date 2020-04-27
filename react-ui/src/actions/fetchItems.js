@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 function getItems() {
-  return axios.get("//localhost:1323/items")
+  return axios.get("https://freezer-stuff.herokuapp.com/items")
     .then(function (response) {
       return {items: response.data}
     })
