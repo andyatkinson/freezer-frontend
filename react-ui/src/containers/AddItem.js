@@ -12,16 +12,24 @@ const AddItem = ({ dispatch }) => {
   let input
   const today = new Date().toJSON().slice(0,10)
 
+  const setSubmitState = function () {
+    const btn = document.getElementById('submit')
+    btn.setAttribute('disabled', '')
+    btn.setAttribute('value', 'Saving...')
+  }
+
   const saveItem = function (event) {
-    console.log("save item")
     // synthetic event
     if (!input.value.trim()) {
       return
     }
 
     const newItem = {name: input.value, addedOn: today}
+    const hostname = window.location.hostname
+    const baseUrl = '//' + (window.location.hostname === 'localhost' ? 'localhost:1323' : 'freezer-stuff.herokuapp.com')
+    const api = '/items'
 
-    axios.post("https://freezer-stuff.herokuapp.com/items", newItem)
+    axios.post(baseUrl + api, newItem)
     .then(res => {
       dispatch(addItem(res.data))
 
@@ -32,25 +40,41 @@ const AddItem = ({ dispatch }) => {
     input.value = ''
   }
 
+  const buttonStyle = {
+    width: "100%",
+    margin: "30px auto 0px auto"
+  }
+
+  const containerStyle = {
+    width: "95%",
+    margin: "10px auto"
+  }
+
+  const inputStyle = {
+    textSize: "3em",
+    width: "100%"
+  }
+
   return (
     <div>
       <ons-page>
         <ons-toolbar>
           <div className="center">Add Item</div>
         </ons-toolbar>
-        <form onSubmit={(e) => {saveItem(); e.preventDefault();}}>
-          <ons-list>
-            <ons-list-header>Details</ons-list-header>
-            <ons-list-item>
+        <div style={containerStyle}>
+          <form onSubmit={(e) => {saveItem(); e.preventDefault(); setSubmitState()}}>
               <ons-input modifier="underbar"
-              placeholder="Lasagna w/ Meat (Servings: 4)..."
-              float
-              ref={node => input = node}
-            ></ons-input>
-            </ons-list-item>
-          </ons-list>
-          <input type="submit" value="Add" className="button--large--cta" />
-        </form>
+                placeholder="Lasagna w/ Meat (Servings: 4)..."
+                float
+                ref={node => input = node}
+                style={inputStyle}
+              ></ons-input>
+              <p>
+                Date Added: {today}
+              </p>
+            <input id="submit" type="submit" value="Add" className="button--large--cta" style={buttonStyle} />
+          </form>
+        </div>
       </ons-page>
     </div>
   )

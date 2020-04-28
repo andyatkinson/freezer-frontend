@@ -1,7 +1,11 @@
 import axios from 'axios'
 
 function getItems() {
-  return axios.get("https://freezer-stuff.herokuapp.com/items")
+  const hostname = window.location.hostname
+  const baseUrl = '//' + (window.location.hostname === 'localhost' ? 'localhost:1323' : 'freezer-stuff.herokuapp.com')
+  const api = '/items'
+
+  return axios.get(baseUrl + api)
     .then(function (response) {
       return {items: response.data}
     })

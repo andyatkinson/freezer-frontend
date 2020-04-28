@@ -17,7 +17,7 @@ class ItemList extends React.Component {
     }
 
     if (loading) {
-      return <div>Loading...</div>
+      return <ons-progress-bar indeterminate />
     }
 
     return (
