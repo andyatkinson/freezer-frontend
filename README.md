@@ -1,5 +1,7 @@
 ## Freezer Frontend
 
+[React](https://reactjs.org/), [Redux](https://redux.js.org/), [Onsen UI](https://onsen.io/)
+
 ### Local Development
 
 Manage dependencies with Yarn
@@ -12,7 +14,8 @@ yarn start
 
 ### Backend
 
-Service should be running on `localhost:1323`
+Back-end service should be running at `localhost:1323`
+
 
 ### Heroku
 
